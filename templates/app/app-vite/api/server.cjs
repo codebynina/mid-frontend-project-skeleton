@@ -9,17 +9,22 @@ const middlewares = jsonServer.defaults();
 // Required: bind the router db to the app for json-server-auth to work
 app.db = router.db;
 
-// Rewrite routes to apply access control before they hit the router.
+// Strip the /api prefix (added by the frontend's api() helper) and apply
+// access control permissions where needed.
+//
 // Permissions are 3 digits: owner | authenticated | public
 //   4 = read, 2 = write, 6 = read+write, 0 = no access
 //
-// /orders* → /600/orders: only the owning user can read or write their orders
-// /users*  → /600/users:  only the owning user can access their own user record
-//
-// /events is left unrewritten — public read access, no write via the API
+// Auth routes are handled by json-server-auth at their root paths.
+// /api/events* → /events:        public read, no write
+// /api/orders* → /600/orders:    only the owning user can read or write
+// /api/users*  → /600/users:     only the owning user can access their record
 const routeGuards = jsonServer.rewriter({
-  "/orders*": "/600/orders$1",
-  "/users*": "/600/users$1",
+  "/api/login": "/login",
+  "/api/register": "/register",
+  "/api/events*": "/events$1",
+  "/api/orders*": "/600/orders$1",
+  "/api/users*": "/600/users$1",
 });
 
 app.use(routeGuards);

@@ -98,11 +98,13 @@ If you want to move from the mock API to the real Express backend (the `api/` pa
 
 1. **Stop the mock API** (`npm run api` / `npm run dev:all`).
 2. **Set up and start the real backend** — follow the instructions in `api/README.md`.
-3. **Update `VITE_API_URL` in your `.env`** to point at the real backend, including its `/api` path prefix:
+3. **Update `VITE_API_URL` in your `.env`** to point at the real backend:
 
 ```
-VITE_API_URL=http://localhost:3001/api
+VITE_API_URL=http://localhost:3001
 ```
+
+The `api()` helper already appends `/api` to every route, so no path prefix is needed here.
 
 > Note: both servers default to port 3001. If they are running at the same time, change one of the ports to avoid a conflict — update `API_PORT` in this package's `.env` for the mock API, or `PORT` in `api/.env` for the real backend.
 
