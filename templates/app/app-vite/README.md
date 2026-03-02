@@ -110,6 +110,44 @@ The `api()` helper already appends `/api` to every route, so no path prefix is n
 
 Your fetch calls via the `api()` helper will work without any other changes.
 
+## Authentication
+
+Authentication is handled by `AuthContext` (`src/context/AuthContext.jsx`). The `AuthProvider` is mounted at the root of the app in `main.jsx`, so auth state is available everywhere.
+
+### Using auth in a component
+
+```jsx
+import { useAuth } from "../../context/AuthContext.jsx";
+
+const { user, token, login, register, logout } = useAuth();
+```
+
+### What each value gives you
+
+| Value | Type | Description |
+|---|---|---|
+| `user` | object \| null | The logged-in user `{ id, email }`, or `null` if not logged in |
+| `token` | string \| null | The JWT access token, or `null` if not logged in |
+| `login(email, password)` | async function | Signs in — throws an `Error` if credentials are wrong |
+| `register(email, password)` | async function | Creates an account and signs in — throws an `Error` on failure |
+| `logout()` | function | Clears the session from state and localStorage |
+
+### Making authenticated API calls
+
+Pass the token as a `Bearer` header on any request that requires auth (orders etc.):
+
+```js
+const response = await fetch(api("/orders"), {
+  headers: {
+    Authorization: `Bearer ${token}`,
+  },
+});
+```
+
+### Session persistence
+
+The token and user are saved to `localStorage` so the session survives a page refresh. They are loaded back into state automatically when the app mounts.
+
 ## Calling the API using `fetch` and the `api()` helper
 
 When you need data from the API, you can use `fetch` but it's important to not hardcode the URLs since they will differ between your development environment and the deployment environment. For this we can use the `api()` helper function.
