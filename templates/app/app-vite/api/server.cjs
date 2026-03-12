@@ -28,6 +28,10 @@ const routeGuards = jsonServer.rewriter({
 });
 
 app.use(routeGuards);
+app.use((req, res, next) => {
+  console.log("Request received:", req.method, req.url);
+  next();
+});
 app.use(middlewares);
 app.use(auth);
 app.use(router);
@@ -47,7 +51,9 @@ app.listen(PORT, () => {
   console.log("");
   console.log("Orders (requires Authorization: Bearer <token>):");
   console.log("  GET    /orders          ← returns only your own orders");
-  console.log("  POST   /orders          ← userId set automatically from token");
+  console.log(
+    "  POST   /orders          ← userId set automatically from token",
+  );
   console.log("  PATCH  /orders/:id");
   console.log("  DELETE /orders/:id");
 });
