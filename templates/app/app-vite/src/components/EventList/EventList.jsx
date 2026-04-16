@@ -9,7 +9,7 @@ import EventCard from "./EventCard";
 
 export default function EventList() {
   return (
-    <ul>
+    <ul className="event-list">
       {events.map((event) => (
         <EventCard key={event.id} event={event} />
       ))}

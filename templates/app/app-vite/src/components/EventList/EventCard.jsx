@@ -1,37 +1,40 @@
 import { Link } from "react-router-dom";
 
 export default function EventCard({ event }) {
+  const soldOut = event.ticketsAvailable === 0;
+
   return (
-    <li>
-      <h2>{event.name}</h2>
+    <li className="event-card">
+      <div className="event-card__top">
+        <span className="event-card__category">{event.category}</span>
+        <span className="event-card__price">
+          {event.price === 0 ? "Free" : `€${event.price}`}
+        </span>
+      </div>
 
-      <p>
-        {event.date} at {event.time}
+      <h2 className="event-card__title">{event.name}</h2>
+
+      <p className="event-card__info">
+        <strong>Date:</strong> {event.date} at {event.time}
       </p>
 
-      <p>
-        {event.venue}, {event.city}
+      <p className="event-card__info">
+        <strong>Location:</strong> {event.venue}, {event.city}
       </p>
 
-      <p>{event.category}</p>
-
-      <p>{event.price === 0 ? "Free" : `€${event.price}`}</p>
-
-      <p>
-        {event.ticketsAvailable === 0
-          ? "Sold out"
-          : `${event.ticketsAvailable} tickets left`}
+      <p className={`event-card__tickets ${soldOut ? "sold-out" : ""}`}>
+        {soldOut ? "Sold out" : `${event.ticketsAvailable} tickets left`}
       </p>
 
-      {/* View details */}
-      <Link to={`/events/${event.id}`}>
-        <button>View Details</button>
-      </Link>
+      <div className="event-card__actions">
+        <Link to={`/events/${event.id}`} className="details-link">
+          View Details
+        </Link>
 
-      {/* Buy ticket */}
-      <button disabled={event.ticketsAvailable === 0}>
-        {event.ticketsAvailable === 0 ? "Sold Out" : "Buy Ticket"}
-      </button>
+        <button className="buy-button" disabled={soldOut}>
+          {soldOut ? "Sold Out" : "Buy Ticket"}
+        </button>
+      </div>
     </li>
   );
 }
