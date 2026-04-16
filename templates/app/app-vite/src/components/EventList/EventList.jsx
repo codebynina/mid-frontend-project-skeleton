@@ -5,7 +5,7 @@ import EventCard from "./EventCard";
 // TODO: add a "Buy ticket" button to each event card
 // TODO: replace the mock data import with a fetch call to GET /events
 
-import events from "../../data/events.js";
+
 
 export default function EventList() {
   return (
