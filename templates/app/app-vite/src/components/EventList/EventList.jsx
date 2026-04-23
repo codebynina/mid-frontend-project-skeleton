@@ -7,15 +7,9 @@ export default function EventList({ events, onSelectEvent }) {
 
   return (
     <ul className="event-list">
-      <ul className="event-list">
-        {events.map((event) => (
-          <EventCard
-            key={event.id}
-            event={event}
-            onSelectEvent={onSelectEvent}
-          />
-        ))}
-      </ul>
+      {events.map((event) => (
+        <EventCard key={event.id} event={event} onSelectEvent={onSelectEvent} />
+      ))}
     </ul>
   );
 }
