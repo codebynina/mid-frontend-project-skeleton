@@ -35,16 +35,19 @@ export default function Layout() {
           <Link to="/events" className="link">
             Events
           </Link>
+          <Link to="/cart">Cart</Link>
 
-          {user && (
+          {user ? (
             <>
               <span>{user.email}</span>
               <button onClick={logout}>Sign out</button>
             </>
+          ) : (
+            <>
+              <Link to="/login">Login</Link>
+              <Link to="/register">Register</Link>
+            </>
           )}
-
-          <Link to="/login">Login</Link>
-          <Link to="/register">Register</Link>
         </nav>
       </header>
 
