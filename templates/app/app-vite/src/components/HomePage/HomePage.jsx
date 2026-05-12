@@ -15,9 +15,7 @@ function HomePage() {
         <EventList />
       </main>
 
-      <footer className="footer">
-        <p>HYF React Project — Week 1</p>
-      </footer>
+      <footer className="footer"></footer>
     </div>
   );
 }

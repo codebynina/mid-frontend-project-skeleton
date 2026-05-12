@@ -1,12 +1,16 @@
 import { Link } from "react-router-dom";
+import { useCart } from "../../context/CartContext.jsx";
 
 export default function EventCard({ event }) {
+  const { addToCart } = useCart();
+
   const soldOut = event.ticketsAvailable === 0;
 
   return (
     <li className="event-card">
       <div className="event-card__top">
         <span className="event-card__category">{event.category}</span>
+
         <span className="event-card__price">
           {event.price === 0 ? "Free" : `€${event.price}`}
         </span>
@@ -31,7 +35,14 @@ export default function EventCard({ event }) {
           View Details
         </Link>
 
-        <button className="buy-button" disabled={soldOut}>
+        <button
+          className="buy-button"
+          disabled={soldOut}
+          onClick={() => {
+            addToCart(event);
+            alert("Ticket added to cart.");
+          }}
+        >
           {soldOut ? "Sold Out" : "Buy Ticket"}
         </button>
       </div>
