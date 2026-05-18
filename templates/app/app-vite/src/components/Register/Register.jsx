@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext.jsx";
 
 export default function Register() {
@@ -15,6 +15,7 @@ export default function Register() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+
     setError("");
 
     if (!email.includes("@")) {
@@ -34,7 +35,9 @@ export default function Register() {
 
     try {
       setLoading(true);
+
       await register(email, password);
+
       navigate("/events");
     } catch (err) {
       setError(err.message || "Registration failed.");
@@ -44,46 +47,50 @@ export default function Register() {
   }
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Register</h1>
+    <section className="auth-page">
+      <div className="auth-card">
+        <h1>Create account</h1>
 
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Email</label>
-          <br />
+        <p className="panel-text">
+          Join to purchase tickets and manage your orders.
+        </p>
+
+        <form className="auth-form" onSubmit={handleSubmit}>
           <input
+            className="auth-input"
             type="email"
+            placeholder="Email address"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-        </div>
 
-        <div>
-          <label>Password</label>
-          <br />
           <input
+            className="auth-input"
             type="password"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-        </div>
 
-        <div>
-          <label>Confirm password</label>
-          <br />
           <input
+            className="auth-input"
             type="password"
+            placeholder="Confirm password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
-        </div>
 
-        {error && <p style={{ color: "red" }}>{error}</p>}
+          {error && <p className="error-message">{error}</p>}
 
-        <button type="submit" disabled={loading}>
-          {loading ? "Registering..." : "Register"}
-        </button>
-      </form>
-    </div>
+          <button className="primary-button" type="submit" disabled={loading}>
+            {loading ? "Creating account..." : "Register"}
+          </button>
+        </form>
+
+        <p className="panel-text">
+          Already have an account? <Link to="/login">Login</Link>
+        </p>
+      </div>
+    </section>
   );
 }

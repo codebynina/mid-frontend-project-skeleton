@@ -29,26 +29,25 @@ export function AuthProvider({ children }) {
   }
 
   async function register(email, password) {
-    async function register(email, password) {
-      const response = await fetch(api("/register"), {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
+    const response = await fetch(api("/register"), {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
 
-      if (!response.ok) {
-        throw new Error("Registration failed");
-      }
-
-      const { accessToken, user } = await response.json();
-      persist(accessToken, user);
+    if (!response.ok) {
+      throw new Error("Registration failed");
     }
+
+    const { accessToken, user } = await response.json();
+    persist(accessToken, user);
   }
 
   function logout() {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    // TODO add the missing logout logic here — clear the token and user from state as well
+    setToken(null);
+    setUser(null);
   }
 
   function persist(accessToken, user) {
@@ -65,7 +64,6 @@ export function AuthProvider({ children }) {
   );
 }
 
-// Usage: const { user, token, login, register, logout } = useAuth();
 export function useAuth() {
   return useContext(AuthContext);
 }

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext.jsx";
 
 export default function Login() {
@@ -8,11 +8,13 @@ export default function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
+
     setError("");
 
     if (!email.includes("@")) {
@@ -27,7 +29,9 @@ export default function Login() {
 
     try {
       setLoading(true);
+
       await login(email, password);
+
       navigate("/events");
     } catch (err) {
       setError(err.message || "Login failed.");
@@ -37,36 +41,40 @@ export default function Login() {
   }
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Login</h1>
+    <section className="auth-page">
+      <div className="auth-card">
+        <h1>Welcome back</h1>
 
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Email</label>
-          <br />
+        <p className="panel-text">Login to manage your tickets and orders.</p>
+
+        <form className="auth-form" onSubmit={handleSubmit}>
           <input
+            className="auth-input"
             type="email"
+            placeholder="Email address"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-        </div>
 
-        <div>
-          <label>Password</label>
-          <br />
           <input
+            className="auth-input"
             type="password"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-        </div>
 
-        {error && <p style={{ color: "red" }}>{error}</p>}
+          {error && <p className="error-message">{error}</p>}
 
-        <button type="submit" disabled={loading}>
-          {loading ? "Logging in..." : "Login"}
-        </button>
-      </form>
-    </div>
+          <button className="primary-button" type="submit" disabled={loading}>
+            {loading ? "Logging in..." : "Login"}
+          </button>
+        </form>
+
+        <p className="panel-text">
+          Don’t have an account? <Link to="/register">Create one</Link>
+        </p>
+      </div>
+    </section>
   );
 }
