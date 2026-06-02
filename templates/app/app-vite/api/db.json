@@ -1,5 +1,31 @@
 {
-  "users": [],
+  "users": [
+    {
+      "email": "wigoni7907@ellbit.com",
+      "password": "$2a$10$SkEf.l4fFf3lAUGmv9pnF.KbAGdCwl/ehQ/eE0Sz3Ln5SuN.bbi4K",
+      "id": 1
+    },
+    {
+      "email": "kobod97150@hidevak.com",
+      "password": "$2a$10$jVlg7OPGwQZB6v6R6kVMmu1VpX3nPS/frQf6kaA3I1f0j5TpksxSe",
+      "id": 2
+    },
+    {
+      "email": "navela6010@nriza.com",
+      "password": "$2a$10$buz0Kkk47vQlDOOOsmx1LuMe0L3uXknPe3OUeOANPJx/uIZBxVm86",
+      "id": 3
+    },
+    {
+      "email": "nohofe9346@nriza.com",
+      "password": "$2a$10$ToPDt8g5aFHO2TuS/MTGt.nu2s.g/gUHMDQBU4zMkLrdE9Ay1uP3G",
+      "id": 4
+    },
+    {
+      "email": "waviwal981@nriza.com",
+      "password": "$2a$10$Zz/0fDQPiGLztqQahGjsXOWAy5Qm/ZyMQ8WDaHYFnJkt4i84DrRJu",
+      "id": 5
+    }
+  ],
   "events": [
     {
       "id": 1,
@@ -12,7 +38,8 @@
       "price": 149,
       "ticketsAvailable": 0,
       "totalTickets": 800,
-      "category": "Conference"
+      "category": "Conference",
+      "image": "https://plus.unsplash.com/premium_photo-1679547202646-331fe6ce8a40?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
       "id": 2,
@@ -25,7 +52,8 @@
       "price": 0,
       "ticketsAvailable": 60,
       "totalTickets": 150,
-      "category": "Hackathon"
+      "category": "Hackathon",
+      "image": "https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
       "id": 3,
@@ -38,7 +66,8 @@
       "price": 79,
       "ticketsAvailable": 12,
       "totalTickets": 30,
-      "category": "Workshop"
+      "category": "Workshop",
+      "image": "https://images.unsplash.com/photo-1632910121591-29e2484c0259?q=80&w=1031&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
       "id": 4,
@@ -51,7 +80,8 @@
       "price": 89,
       "ticketsAvailable": 18,
       "totalTickets": 25,
-      "category": "Workshop"
+      "category": "Workshop",
+      "image": "https://plus.unsplash.com/premium_photo-1664299935896-8b7638a6f105?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
       "id": 5,
@@ -64,7 +94,8 @@
       "price": 0,
       "ticketsAvailable": 85,
       "totalTickets": 120,
-      "category": "Meetup"
+      "category": "Meetup",
+      "image": "https://images.unsplash.com/photo-1702467852657-26c7a1d9fceb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
       "id": 6,
@@ -77,7 +108,8 @@
       "price": 199,
       "ticketsAvailable": 0,
       "totalTickets": 40,
-      "category": "Bootcamp"
+      "category": "Bootcamp",
+      "image": "https://images.unsplash.com/photo-1531498860502-7c67cf02f657?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
       "id": 7,
@@ -90,7 +122,8 @@
       "price": 299,
       "ticketsAvailable": 320,
       "totalTickets": 1200,
-      "category": "Conference"
+      "category": "Conference",
+      "image": "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
       "id": 8,
@@ -103,7 +136,8 @@
       "price": 95,
       "ticketsAvailable": 8,
       "totalTickets": 25,
-      "category": "Workshop"
+      "category": "Workshop",
+      "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
       "id": 9,
@@ -116,7 +150,8 @@
       "price": 59,
       "ticketsAvailable": 40,
       "totalTickets": 60,
-      "category": "Workshop"
+      "category": "Workshop",
+      "image": "https://images.unsplash.com/photo-1603201667141-5a2d4c673378?q=80&w=1196&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
       "id": 10,
@@ -129,8 +164,47 @@
       "price": 69,
       "ticketsAvailable": 55,
       "totalTickets": 80,
-      "category": "Workshop"
+      "category": "Workshop",
+      "image": "https://plus.unsplash.com/premium_photo-1682140999442-e9e2a5f55be6?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "userId": 5,
+      "items": [
+        {
+          "id": 4,
+          "name": "TypeScript Deep Dive",
+          "date": "2026-05-10",
+          "time": "10:00",
+          "venue": "IDA Conference Centre",
+          "city": "Copenhagen",
+          "description": "Go beyond the basics. This workshop covers generics, conditional types, utility types, declaration merging, and integrating TypeScript into large codebases. Prior TypeScript experience required.",
+          "price": 89,
+          "ticketsAvailable": 18,
+          "totalTickets": 25,
+          "category": "Workshop",
+          "image": "https://plus.unsplash.com/premium_photo-1664299935896-8b7638a6f105?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "quantity": 1
+        },
+        {
+          "id": 3,
+          "name": "JavaScript: Modern Patterns Workshop",
+          "date": "2026-05-03",
+          "time": "10:00",
+          "venue": "Founders House",
+          "city": "Copenhagen",
+          "description": "A hands-on full-day workshop covering modern JavaScript patterns: closures, async/await, Promises, modules, and functional techniques. Bring your laptop. Small group, individual coaching included.",
+          "price": 79,
+          "ticketsAvailable": 12,
+          "totalTickets": 30,
+          "category": "Workshop",
+          "image": "https://images.unsplash.com/photo-1632910121591-29e2484c0259?q=80&w=1031&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "quantity": 1
+        }
+      ],
+      "total": 168,
+      "id": 1
+    }
+  ]
 }

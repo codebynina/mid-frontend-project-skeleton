@@ -1,14 +1,19 @@
-import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext.jsx";
+"use client";
 
-export default function Register() {
-  const { register } = useAuth();
-  const navigate = useNavigate();
+import { useState } from "react";
+
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+
+import { useAuth } from "@/context/AuthContext";
+
+export default function Login() {
+  const { login } = useAuth();
+
+  const router = useRouter();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -23,24 +28,19 @@ export default function Register() {
       return;
     }
 
-    if (password.length < 6) {
-      setError("Password must be at least 6 characters.");
-      return;
-    }
-
-    if (password !== confirmPassword) {
-      setError("Passwords do not match.");
+    if (!password) {
+      setError("Please enter your password.");
       return;
     }
 
     try {
       setLoading(true);
 
-      await register(email, password);
+      await login(email, password);
 
-      navigate("/events");
+      router.push("/events");
     } catch (err) {
-      setError(err.message || "Registration failed.");
+      setError(err.message || "Login failed.");
     } finally {
       setLoading(false);
     }
@@ -49,11 +49,9 @@ export default function Register() {
   return (
     <section className="auth-page">
       <div className="auth-card">
-        <h1>Create account</h1>
+        <h1>Welcome back</h1>
 
-        <p className="panel-text">
-          Join to purchase tickets and manage your orders.
-        </p>
+        <p className="panel-text">Login to manage your tickets and orders.</p>
 
         <form className="auth-form" onSubmit={handleSubmit}>
           <input
@@ -72,23 +70,15 @@ export default function Register() {
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <input
-            className="auth-input"
-            type="password"
-            placeholder="Confirm password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-
           {error && <p className="error-message">{error}</p>}
 
           <button className="primary-button" type="submit" disabled={loading}>
-            {loading ? "Creating account..." : "Register"}
+            {loading ? "Logging in..." : "Login"}
           </button>
         </form>
 
         <p className="panel-text">
-          Already have an account? <Link to="/login">Login</Link>
+          Don’t have an account? <Link href="/register">Create one</Link>
         </p>
       </div>
     </section>

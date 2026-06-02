@@ -1,13 +1,20 @@
+"use client";
+
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext.jsx";
+
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+
+import { useAuth } from "@/context/AuthContext";
 
 export default function Register() {
   const { register } = useAuth();
-  const navigate = useNavigate();
+
+  const router = useRouter();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const [error, setError] = useState("");
@@ -38,7 +45,7 @@ export default function Register() {
 
       await register(email, password);
 
-      navigate("/events");
+      router.push("/events");
     } catch (err) {
       setError(err.message || "Registration failed.");
     } finally {
@@ -88,7 +95,7 @@ export default function Register() {
         </form>
 
         <p className="panel-text">
-          Already have an account? <Link to="/login">Login</Link>
+          Already have an account? <Link href="/login">Login</Link>
         </p>
       </div>
     </section>

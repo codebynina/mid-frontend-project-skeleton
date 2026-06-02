@@ -1,5 +1,8 @@
+"use client";
+
 import { useState } from "react";
-import { useCart } from "../../context/CartContext.jsx";
+
+import { useCart } from "@/context/CartContext";
 
 export default function EventCard({ event, onViewDetails }) {
   const { addToCart } = useCart();

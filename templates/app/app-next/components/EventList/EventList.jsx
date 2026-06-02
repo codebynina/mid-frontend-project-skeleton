@@ -1,5 +1,9 @@
+"use client";
+
 import { useEffect, useState } from "react";
-import api from "../../api.js";
+
+import api from "@/utils/api";
+
 import EventCard from "./EventCard";
 
 const EVENTS_PER_PAGE = 6;
