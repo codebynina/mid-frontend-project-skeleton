@@ -27,12 +27,15 @@ export default function Checkout() {
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
+          userId: user.id,
           items,
           total,
         }),
       });
 
       if (!response.ok) {
+        const errorText = await response.text();
+        console.log("Checkout failed:", response.status, errorText);
         throw new Error("Could not create order.");
       }
 
